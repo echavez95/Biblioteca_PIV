@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Data.Modelos
 {
-    public class Libro
+    public class Editorial
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string nombre { get; set; }
-        public int año { get; set; }
-        public Editorial Editorial { get; set; }
     }
-
 }
