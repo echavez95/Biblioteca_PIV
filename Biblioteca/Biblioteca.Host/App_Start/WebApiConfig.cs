@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace Biblioteca.Host
 {
@@ -9,6 +10,10 @@ namespace Biblioteca.Host
     {
         public static void Register(HttpConfiguration config)
         {
+            GlobalConfiguration.Configuration.Formatters //para ignorar los ciclos infinitos
+                .JsonFormatter.SerializerSettings
+                .ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
             // Web API configuration and services
 
             // Web API routes
