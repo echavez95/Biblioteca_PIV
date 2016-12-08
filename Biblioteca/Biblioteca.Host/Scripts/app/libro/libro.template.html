@@ -1,0 +1,66 @@
+﻿<form name="libroForm" novalidate>
+    <div class="form-group">
+        <label for="libroId">Id</label>
+        <input class="form-control" id="libroId" ng-model="libroActual.Id" ng-disabled="true"/>
+    </div>
+    <div class="form-group">
+        <label for="libroNombre">Nombre</label>
+        <input class="form-control" 
+               id="libroNombre" 
+               name="libroNombre" 
+               ng-model="libroActual.Nombre" 
+               required
+               ng-maxlength="25"
+               ng-minlength="3"
+        />
+        <div ng-messages="libroForm.libroNombre.$error">
+            <div class="label label-warning" ng-message="required">
+                El nombre de la libro es requerido
+            </div>
+            <div class="label label-warning" ng-message="minlength">
+                El nombre de la libro debe tener mas de 3 caracteres
+            </div>
+            <div class="label label-warning" ng-message="maxlength">
+                El nombre de la libro debe tener menos de 25 caracteres
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="libroAnio">Año</label>
+        <input class="form-control"
+               id="libroAnio"
+               name="libroAnio"
+               ng-model="libroActual.Anio"
+               required
+               type="number"/>
+        <div ng-messages="libroForm.libroAnio.$error">
+            <div class="label label-warning" ng-message="required">
+                El año del libro es requerido
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button ng-disabled="libroForm.$invalid" ng-click="salvarLibro()" class="btn btn-primary">{{accionActual}}</button>
+        <button ng-click="limpiar()" class="btn btn-default">Cancelar</button>
+    </div>
+</form>
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Año</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="libro in libros">
+        <td>{{libro.Id}}</td>
+        <td>{{libro.Nombre}}</td>
+        <td>{{libro.Anio}}</td>
+        <td>
+            <button ng-click="editar(libro)" class="btn btn-link">Editar</button>
+        </td>
+        <td>
+            <button ng-click="eliminar(libro)" class="btn btn-link">Eliminar</button>
+        </td>
+    </tr>
+</table>

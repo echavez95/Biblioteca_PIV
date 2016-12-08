@@ -15,7 +15,12 @@ function ($routerProvider) {
         .otherwise({
             redirectTo: '/'
         })
+        .when('/libros', {
+            templateUrl: "/Scripts/app/libro/libro.template.html",
+            controller: "libroController"
+        })
+        .otherwise({
+            redirectTo: '/'
+        })
 }
-
-
 ]);
